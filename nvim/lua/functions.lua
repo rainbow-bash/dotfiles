@@ -180,3 +180,56 @@ function GetParentPath(path)
 		return string.match(path, pattern1)
 	end
 end
+
+function FindDelim()
+	local line = vim.api.nvim_get_current_line()
+	local delim_pattern = "[(){}<>.,;:%[%]]"
+	return line:match(delim_pattern) or "<esc>"
+end
+
+function PrintObj(obj, hierarchyLevel)
+	if hierarchyLevel == nil then
+		hierarchyLevel = 0
+	elseif hierarchyLevel == 4 then
+		return 0
+	end
+	local whitespace = ""
+	for i = 0, hierarchyLevel, 1 do
+		whitespace = whitespace .. "-"
+	end
+	io.write(whitespace)
+	print(obj)
+	if type(obj) == "table" then
+		for k, v in pairs(obj) do
+			io.write(whitespace .. "-")
+			if type(v) == "table" then
+				PrintObj(v, hierarchyLevel + 1)
+			else
+				print(v)
+			end
+		end
+	else
+		print(obj)
+	end
+end
+
+function Emacmds(cmd_bufname)
+	local height = vim.api.nvim_win_get_height(0)
+	local bufname = vim.api.nvim_buf_get_name(0)
+	local wins = vim.api.nvim_list_wins()
+	for key, value in pairs(wins) do
+		local wname = vim.fn.wingetinfo(value)
+		print(wname)
+	end
+	if height >= 48 then
+		pcall(vim.cmd, "wincmd s")
+	else
+		-- if one of the wins already has a
+		vim.api.nvim_set_current_win()
+	end
+	if cmd_bufname ~= bufname then
+		pcall(vim.cmd, "n _____output_____.sh")
+	end
+	pcall(vim.cmd, "%d")
+	vim.api.nvim_input(":r! ")
+end

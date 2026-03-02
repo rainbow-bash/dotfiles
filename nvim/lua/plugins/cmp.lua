@@ -1,5 +1,8 @@
 return {
 	"hrsh7th/nvim-cmp",
+	completion = {
+		keyword_length = 2000,
+	},
 	dependencies = {
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
@@ -31,6 +34,23 @@ return {
 			},
 		})
 		cmp.setup({
+			-- fuck u
+			-- enabled = function()
+			-- 	if vim.g.is_cmp_open then
+			-- 		return true
+			-- 	end
+			-- 	local col = vim.fn.col(".")
+			-- 	local line = vim.fn.getline(".")
+			-- 	local current = string.sub(line, col - 1, col - 1)
+			-- 	if current == "." then
+			-- 		vim.g.is_cmp_open = true
+			-- 		return true
+			-- 	end
+			-- 	return false
+			-- end,
+			-- completion = {
+			-- 	autocomplete = false,
+			-- },
 			window = {
 				completion = cmp.config.window.bordered(),
 				documentation = cmp.config.window.bordered(),
@@ -39,9 +59,8 @@ return {
 				-- ["<Cncmd>v
 				-- zvzz-b>"] = cmp.mapping.scroll_docs(-4),
 				-- ["<C-f>"] = cmp.mapping.scroll_docs(4),
-				["<C-Space>"] = cmp.mapping.complete(),
-				["<C-c>"] = cmp.mapping.abort(),
 				["<Tab>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set       `select` to `false` to only confirm explicitly selected items.
+				["<C-e>"] = cmp.mapping.abort(),
 			}),
 
 			sources = cmp.config.sources({

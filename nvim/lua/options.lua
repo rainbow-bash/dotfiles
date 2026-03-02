@@ -1,3 +1,4 @@
+vim.g.is_cmp_open = false
 local autocmd = vim.api.nvim_create_autocmd
 
 -- @returns a "clear = true" augroup
@@ -53,9 +54,16 @@ vim.opt.showmode = false -- We don't need to see things like -- INSERT -- anymor
 -- vim.opt.hlsearch = false -- No search highlight
 vim.opt.splitbelow = true
 vim.g.python_host_prog = "/usr/sbin/python"
-vim.opt.iskeyword:remove("_") -- Add - to be part of word
+-- vim.opt.iskeyword:remove("_") -- Add - to be part of word
 vim.g.python3_host_prog = "/usr/sbin/python"
 -- python3 -m venv ~/venvs/.nvim-venv && source ~/venvs/.nvim-venv/bin/activate && python3 -m pip install pynvim
 vim.diagnostic.enable(false)
 vim.api.nvim_set_hl(0, "MiniPickNormal", { bg = "#cf2224", default = true })
 vim.opt.sessionoptions = "curdir,folds,globals,help,tabpages,terminal,winsize"
+vim.opt.iminsert = 1
+
+local gdproject = io.open(vim.fn.getcwd() .. "/project.godot", "r")
+if gdproject then
+	io.close(gdproject)
+	vim.fn.serverstart("./godothost")
+end

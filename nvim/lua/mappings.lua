@@ -1,4 +1,5 @@
 require("functions")
+vim.keymap.set({ "i", "v", "t" }, "©", "<Esc>", { desc = "Open parent directory" })
 vim.keymap.set("n", "<C-e>", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 vim.keymap.set({ "n" }, "gw", HotToGo, { noremap = true, silent = true })
 vim.keymap.set("i", "<A-m>", InsertPrint, { noremap = true, desc = "personal: printfc" })
@@ -36,6 +37,8 @@ end
 vim.keymap.set({ "n" }, "<leader>d", diagnostic, { noremap = true, desc = "replacement in selection" })
 -- Toggle compiler results
 vim.keymap.set("n", "<A-c>", CompilerModeChafoide)
+vim.keymap.set("n", "©", CompilerModeChafoide)
+
 vim.keymap.set("n", "<C-c>", "<cmd>ccl<CR>")
 vim.keymap.set("n", "<leader>rn", function()
 	-- it returns success status, thus you can fallback like so
@@ -43,7 +46,7 @@ vim.keymap.set("n", "<leader>rn", function()
 		vim.lsp.buf.rename()
 	end
 end)
-vim.keymap.set("n", "<leader>q", "<cmd>qa<CR>")
+vim.keymap.set("n", "<leader>q", "<cmd>q!<CR>")
 vim.keymap.set("n", "<leader>Q", "<cmd>qa!<CR>")
 -- vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 vim.keymap.set({ "n", "v", "x" }, "<leader>n", ":norm ", { desc = "enter norm command." })
@@ -86,8 +89,26 @@ vim.keymap.set({ "n" }, "<leader>Z", "<cmd>vs#<CR>", { noremap = true })
 vim.keymap.set({ "v" }, "x", "<Plug>(Exchange)", { noremap = true })
 vim.keymap.set({ "n" }, "<C-w>sk", "<C-w>s<C-w>k", { noremap = true })
 vim.keymap.set({ "n" }, "<C-w>sj", "<C-w>s<C-w>j", { noremap = true })
-vim.keymap.set({ "v" }, "<leader>l", "mL:<Up><CR>`L", { noremap = true })
+vim.keymap.set({ "n", "v", "x" }, "<leader>l", ":lua<CR>", { noremap = true })
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { silent = true, noremap = true })
+vim.keymap.set("i", "<A-c>", "<Esc>", { silent = true, noremap = true })
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 vim.keymap.set("n", "<leader>A", ":wincmd v <cr><c-^>", { desc = "alternate file", noremap = true, silent = true })
 vim.keymap.set("n", "<leader><Tab>", "g<Tab>", { desc = "alternate tab", noremap = true, silent = true })
+-- try all of these in order
+vim.keymap.set("n", "du", "dt{", { desc = "alternate tab", noremap = true, silent = true })
+vim.keymap.set("n", "du", "dt,", { desc = "alternate tab", noremap = true, silent = true })
+vim.keymap.set("n", "<F1>", "mFggVGgq`F", { desc = "alternate tab", noremap = true, silent = true })
+vim.keymap.set("n", "du", "dt(", { desc = "alternate tab", noremap = true, silent = true })
+
+-- vim.keymap.set(
+-- 	"n",
+-- 	"<F8>",
+-- 	":wincmd s<CR><cmd>e _____output_____.sh <CR><cmd>%d<CR>:r! ",
+-- 	{ desc = "alternate tab", noremap = true }
+-- )
+-- vim.keymap.set("n", "<leader>c", function()
+-- 	Emacmds("_____output_____.sh")
+-- end, { desc = "alternate tab", noremap = true })
+vim.keymap.set("n", "<leader>c", ":! ", { desc = "alternate tab", noremap = true })
+vim.keymap.set("v", "S", "y:S/+//g<Left><Left>", { desc = "alternate tab", noremap = true })

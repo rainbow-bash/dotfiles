@@ -1,5 +1,7 @@
 require("config.lazy")
 require("mappings")
 require("options")
-vim.cmd.colorscheme("catppuccin-mocha")
+vim.cmd.colorscheme("pink-pony-club")
+vim.lsp.config("gdscript", {})
+vim.lsp.enable({ "gdscript" })
 print("nya init")

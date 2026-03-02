@@ -74,7 +74,10 @@ return {
 					})
 				end,
 			},
-			-- ts_ls = {},
+			yamlls = {},
+			-- postgres_lsp = {},
+			sqlls = {},
+			-- gdscript = {},
 			tailwindcss = {},
 			ols = {
 				on_attach = function(client)

@@ -8,6 +8,7 @@ return {
 	opts = {
 		---@class snacks.zen.Config
 		zen = {
+			width = 10, -- full width
 			-- You can add any `Snacks.toggle` id here.
 			-- Toggle state is restored when the window is closed.
 			-- Toggle config options are NOT merged.
@@ -49,7 +50,7 @@ return {
 						transparent = false,
 						blend = 90,
 					},
-					width = 90, -- full width
+					width = 0, -- full width
 				},
 			},
 		},
@@ -93,7 +94,7 @@ return {
 						["<c-a>"] = { "select_all", mode = { "n" } },
 						["<c-b>"] = { "preview_scroll_up", mode = { "n" } },
 						["<c-f>"] = { "preview_scroll_down", mode = { "n" } },
-						["<a-h>"] = "toggle_hidden",
+						["<a-h>"] = { "toggle_hidden", mode = { "n", "i" } },
 					},
 				},
 				list = {
@@ -109,7 +110,7 @@ return {
 						["<Up>"] = "list_up",
 						["<a-d>"] = "inspect",
 						["<a-f>"] = "toggle_follow",
-						["<a-h>"] = "toggle_hidden",
+						["<a-h>"] = { "toggle_hidden", mode = { "n", "i" } },
 						["<a-i>"] = "toggle_ignored",
 						["<a-m>"] = "toggle_maximize",
 						["<a-p>"] = "toggle_preview",
@@ -176,6 +177,7 @@ return {
 				end,
 				---@param p snacks.Picker
 				snacks_oil = function(p)
+					-- TODO: arreglar porque esto no esta funcionando no se por que pero en la carpeta de places de out of bounds no jala no abre ahi
 					local cursor = p.list.cursor
 					local items = p.list.items
 					local item = items[cursor]
@@ -347,7 +349,7 @@ return {
 		{
 			"<leader>sd",
 			function()
-				Snacks.picer.diagnostics()
+				Snacks.picker.diagnostics()
 			end,
 			desc = "Diagnostics",
 		},

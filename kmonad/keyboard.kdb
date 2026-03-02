@@ -276,24 +276,23 @@
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
   caps a    s    d    f    g    h    j    k    l    ;    '    ret
   lsft z    x    c    v    b    n    m    ,    .    /    rsft
-  lctl lmet lalt           spc            ralt fn rctl
+  lctl lmet lalt           spc            ralt rctl fn 
 )
 
 (deflayer cool
   esc  F1    F2    F3    F4    F5    F6    F7    F8    F9    F10   F11   F12
   grv  1    2    3    4    5    6    7    8    9    0    -   =    bspc
   @tgru   q   w    e    r    t    y    u    i    o    p    [    ]    \
-  esc  a  s    d    f    g    h    j    k    l  ;   '    ret
+  esc a  s    d    f    g    h    j    k    l  ;   '    ret
   lsft z    x    c    v    b    n    m    ,    .    /    rsft
-  lctl lmet lctl           spc             lalt 1 rctl
+  lctl lmet lctl           spc             lalt   lalt rctl
 )
-
 
 (deflayer altlayer
   esc  F1    F2    F3    F4    F5    F6    F7    F8    F9    F10   F11   F12
   grv  S-1    S-2    S-3    S-4    S-5    S-6    S-7    S-8    S-9    S-0    -   +    bspc
   lsft   !   @    +    !    #    %    -    \(    \)   S--   {    }    |
-  @sesc  M-a  lsft    %    F   del     bspc    *    &    ^  :   "    rsft
+  esc  M-a  lsft    %    F   del     bspc    *    &    ^  :   "    rsft
   lsft M-z    M-x    M-c    V     grv   $ =      <    >    ?    caps
   lalt lmet lctl           spc             @symbol_toggle 1 rctl
 )
@@ -302,7 +301,7 @@
   esc  F1    F2    F3    F4    F5    F6    F7    F8    F9    F10   F11   F12
   grv  C-1    C-2    C-3   C-4    C-5    ^    &    *    \(    \)    -    +    bspc
   tab   \(   \)  {   }  $       #    @ <    >     [    ]    ]    |
-  @sesc   *    &   %   = !  bspc   -    S--   =    :  '    @ralt
+  @sesc   *    &   %   = !  bspc   del    S--   =    :  '    @ralt
   lsft  ^   =     +    V  "   =    :    <    >    +    rsft
   lalt lmet lctl           spc            @symbol_toggle @nutg rctl
 )
@@ -319,9 +318,9 @@
 (deflayer notconfy
   esc  F1    F2    F3    F4    F5    F6    F7    F8    F9    F10   F11   F12
   grv  !    @    #   $    %    ^    &    *    \(    \)    -    +    bspc
-  lsft   !   @    +    !    #    %    -    \(    \)   S--   {    }    |
-  lsft A    S    D    F    G    left    down    up    right  =    "    bspc
-  lsft M-z    M-x    M-c    V     grv   $ =      <    >    caps    rsft
+  lsft   !   @    RA-e    !    #    a    RA-u    RA-i    RA-o   S--   {    }    |
+	lsft RA-a    S    del    F    del    left    down    up    right  `    ~    bspc
+  lsft M-z    M-x    M-c    V     grv   RA-n =      <    >    caps    rsft
   lalt lmet lctl           esc            ralt @nutg rctl
 )
 
