@@ -112,3 +112,5 @@ vim.keymap.set("n", "du", "dt(", { desc = "alternate tab", noremap = true, silen
 -- end, { desc = "alternate tab", noremap = true })
 vim.keymap.set("n", "<leader>c", ":! ", { desc = "alternate tab", noremap = true })
 vim.keymap.set("v", "S", "y:S/+//g<Left><Left>", { desc = "alternate tab", noremap = true })
+vim.keymap.set("v", "R", "y:%S/+//g<Left><Left>", { desc = "alternate tab", noremap = true })
+vim.keymap.set("n", "<CR>", "gF", { desc = "alternate tab", noremap = true })

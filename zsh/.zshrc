@@ -29,9 +29,9 @@ source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 znap source zsh-completions
 znap source zsh-syntax-highlighting
-znap source zsh-async
-znap source zsh-colored-man-pages
-znap source zsh-abbrev-alias
+znap source mafredri/zsh-async
+znap source momo-lab/zsh-abbrev-alias
+znap source ael-code/zsh-colored-man-pages
 fancy-ctrl-z () {
   if [[ $#BUFFER -eq 0 ]]; then
     BUFFER="fg"

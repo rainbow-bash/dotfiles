@@ -13,7 +13,7 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +53 ~/dotfiles/tmux/tmux.conf
+badd +49 ~/dotfiles/tmux/tmux.conf
 argglobal
 %argdel
 edit ~/dotfiles/tmux/tmux.conf
@@ -28,12 +28,12 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 15 - ((11 * winheight(0) + 11) / 22)
+let s:l = 49 - ((27 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 15
-normal! 08|
+keepjumps 49
+normal! 021|
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

@@ -124,6 +124,8 @@ function CompilerModeChafoide()
 	if is_loc_list or ext == "ts" or ext == "tsx" or ext == "js" or ext == "jsx" then
 		vim.diagnostic.setloclist({ open = false })
 		vim.cmd("botright 10lopen")
+	elseif ext == "svelte" then
+		vim.cmd("SvelteCheck")
 	else
 		local results
 		if string.find(filename, "test") ~= nil then
